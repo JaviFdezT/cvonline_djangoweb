@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JaviFdezT - Django page</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<style>
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+	font-family: BEBAS;
+	src: url("http://webdesigncove.com/fonts/BEBAS___.ttf")
+}
+html, body, table{
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+} 
+object, iframe,blockquote,
+h1, h2, h3, h4, h5, h6, p, 
+dl, dt, dd, ol, ul, fieldset, 
+form, legend, table, caption, th, td {
+	margin: 0;
+	padding: 0;
+	border:none;
+}
+body {
+	background: #f5f5f5;
+	font-family: Helvetica, Arial, sans-serif;
+}
+#leftBar {
+	background-color: #C8F9F9;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	position: fixed;
+	width: 360px;
+	box-shadow: 6px 2px 8px rgba(0, 0, 0, 0.80);
+	-moz-box-shadow: 6px 2px 8px rgba(0, 0, 0, 0.80);
+	-webkit-box-shadow: 6px 2px 8px rgba(0, 0, 0, 0.80);
+	overflow:auto;/* must have scrollbar if content is outside viewport*/
+}
+#holder {
+	margin-left: 361px;
+        margin-right: 20px;
+	padding-left: 50px;
+	margin-top: 10px;
+	zoom:1.0;/* ie6 and 7*/
+}
+h1.logo {
+	font-size: 26px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	text-transform: uppercase;
+	line-height: 1.2em;
+	letter-spacing: -3px;
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+}
+h1.postTitle { font-family: BEBAS, Helvetica, Verdana, Sans-Serif; }
+p {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1.45em;
+        margin-left: 30px
+}
+#navigation {
+	text-align: center;
+ list-style-type: none;
+}
+#navigation a:link {
+	font-family: BEBAS, Helvetica, Verdana, Sans-Serif;
+	font-size: 20px;
+	color: #0E1074;
+}
+#navigation a:visited { color: #0E1074 }
+#navigation a:hover { color: #890A06; }
+</style>
+</head>
+
+<body>
+<div id="leftBar"> 
+		<br><br><br><br>		
+		<ul id="navigation">
+				<h1 class="postTitle">{{ myname }}</h1><br><br>
+				{% for i in myaddress %} 
+				    <li>{{ i }}</li> 
+				{% endfor %} 
+				<br><li>Date of birth: {{mydatebirth}}</li>
+				<li>Nationality: {{mynationality}}</li>
+				<br><li>Phone number: {{myphonenumber}}</li>
+				<li>Email address: {{mymail}}</li>
+				<li>{% if mylinkedin %}<a href={{mylinkedin}}>LinKedin </a> {% endif %}{% if mygithub %}<a href={{mygithub}}>GitHub </a>{% endif %}</li><br><br>
+				{% if myprojects %}
+				<li>Projects:</li>
+				{% for i in myprojects %} 
+				    <li>{{i.name}} {% if i.filename %}<a href=/{{i.filename}}/home style="font-size:14px">(Docs)  </a>{% endif %}  {% if i.url %}<a style="font-size:14px" href={{i.url}} >(Docs)</a>{% endif %}</li> 
+				{% endfor %} 
+				{% endif %}
+		</ul>
+</div>
+
+<div id="holder">
+		<br>		
+		<ul id="navigation">
+				<div align=right > <b>{{ myname }}</b></div><br><br>
+				{% load staticfiles %}
+				<div align=right><img src="/{{ MEDIA_URL }}{{imgfile}}" alt=""/></div>
+				<div align=right> <p>{{ person.profile }}</p></div><br><br><br><br>
+
+				{% if myworks or myeducs or myconfs or mylangs or mydigcomps%}
+				<div align=left> <b style="font-size:22px">Index</b></div><br>
+
+				{% if myworks %}
+				    <div align=left><a href="#workexperience" style="text-indent:25px;font-size:13px">Work Experience</a></div>
+				{% endif %}
+				{% if myeducs %}
+				    <div align=left><a href="#education" style="text-indent:25px;font-size:13px">Education</a></div>
+				{% endif %}
+				{% if myconfs %}
+				    <div align=left><a href="#confsandevents" style="text-indent:25px;font-size:13px">Conferences and seminars</a></div>
+				{% endif %}
+				{% if mylangs %}
+				    <div align=left><a href="#languages" style="text-indent:25px;font-size:13px">Languages</a></div>
+				{% endif %}
+				{% if mydigcomps %}
+				    <div align=left><a href="#digcomps" style="text-indent:25px;font-size:13px">Digital competence</a></div>
+				{% endif %}
+				{% endif %}
+
+				{% if myworks %}
+				<br><br><br><div align=left> <a name="workexperience" style="font-weight:bold;font-size:22px;text-decoration:underline">Work Experience</a></div><br>
+				{% for i in myworks %} 
+				    <div align=left> <b style="font-size:17px">-   {{i.position}}</b></div>
+				    <div align=left><p style="text-indent:20px;font-size:16px">{{i.dates}}</p></div>
+				    <div align=left><p style="text-indent:20px;font-size:15px">{{i.organization}}</p></div>
+				    <div align=left><p style="text-indent:20px;font-size:12px">Area of work: {{i.description}}</p></div><br>
+				{% endfor %} 
+				{% endif %}
+
+				{% if myeducs %}
+				<br><br><div align=left> <a name="education" style="font-weight:bold;font-size:22px;text-decoration:underline">Education</a></div><br>
+				{% for i in myeducs %} 
+				    <div align=left> <b style="font-size:17px">-   {{i.title}}</b></div>
+				    <div align=left><p style="text-indent:20px;font-size:16px">{{i.dates}}</p></div>
+				    <div align=left><p style="text-indent:20px;font-size:15px">{{i.organization}}</p></div>
+				    <div align=left><p style="text-indent:20px;font-size:12px">Area of work: {{i.description}}</p></div>
+				    {% if i.certificate %}
+			                           <div align=left><a style="text-indent:20px;font-size:15px" href={{i.certificate}}>Certificate</a></div>
+				    {% endif %}
+				    <br>
+				{% endfor %} 
+				{% endif %}
+				
+				{% if myconfs %}
+				<br><br><div align=left> <a name="confsandevents" style="font-weight:bold;font-size:22px;text-decoration:underline">Conferences and seminars</a></div><br>
+				{% for i in myconfs %} 
+				    <div align=left> <b style="font-size:17px">-   {{i.title}}</b></div>
+				    <div align=left><p style="text-indent:20px;font-size:16px">{{i.dates}}</p></div>
+				    <div align=left><p style="text-indent:20px;font-size:15px">{{i.organization}}</p></div>
+				    <div align=left><p style="text-indent:20px;font-size:12px">Area of work: {{i.description}}</p></div><br>
+				{% endfor %} 
+				{% endif %}				
+				<br><br>
+
+				{% if mylangs %}
+				<br><br><div align=left> <a name="languages" style="font-weight:bold;font-size:22px;text-decoration:underline">Languages</a></div><br>
+				<style type="text/css">
+				.tg  {border-collapse:collapse;border-spacing:0;}
+				.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+				.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+				.tg .tg-i81m{font-weight:bold;background-color:#ffffff;text-align:center;vertical-align:top}
+				.tg .tg-3we0{background-color:#ffffff;vertical-align:top}
+				</style>
+				<table class="tg">
+				  <tr>
+				    <th class="tg-i81m" rowspan="2">Language</th>
+				    <th class="tg-i81m" colspan="3">Level<br></th>
+				    <th class="tg-i81m" rowspan="2">Native</th>
+				  </tr>
+				  <tr>
+				    <td class="tg-i81m">Spoken</td>
+				    <td class="tg-i81m">Written</td>
+				    <td class="tg-i81m">Understood</td>
+				  </tr>
+				  {% for i in mylangs %}
+				  <tr>
+				    <td class="tg-3we0">{{i.language}}</td>
+				    <td class="tg-3we0">{{i.spoken}}</td>
+				    <td class="tg-3we0">{{i.written}}</td>
+				    <td class="tg-3we0">{{i.understood}}</td>
+				    <td class="tg-3we0">{{i.native}}</td>
+				  </tr>{% endfor %}
+				</table>
+				{% endif %}				
+				<br><br>
+				
+
+				{% if mydigcomps %}
+				<br><br><div align=left> <a name="digcomps" style="font-weight:bold;font-size:22px;text-decoration:underline">Digital competence</a></div><br>
+				<style type="text/css">
+				.tg  {border-collapse:collapse;border-spacing:0;}
+				.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+				.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+				.tg .tg-i81m{font-weight:bold;background-color:#ffffff;text-align:center;vertical-align:top}
+				.tg .tg-3we0{background-color:#ffffff;vertical-align:top}
+				</style>
+				<table class="tg">
+				  <tr>
+				    <th class="tg-i81m" rowspan="2">Software / Application</th>
+				    <th class="tg-i81m" colspan="4">Level<br></th>
+				  </tr>
+				  <tr>
+				    <td class="tg-i81m">Information processing</td>
+				    <td class="tg-i81m">Content creation</td>
+				    <td class="tg-i81m">Safety</td>
+				    <td class="tg-i81m">Problem solving</td>
+				  </tr>
+				  {% for i in mydigcomps %}
+				  <tr>
+				    <td class="tg-3we0">{{i.comp}}</td>
+				    <td class="tg-3we0">{{i.infoprocessing}}</td>
+				    <td class="tg-3we0">{{i.contentcreation}}</td>
+				    <td class="tg-3we0">{{i.safety}}</td>
+				    <td class="tg-3we0">{{i.problemsolving}}</td>
+				  </tr>{% endfor %}
+				</table>
+				{% endif %}				
+				<br><br><br><br><br><br>
+                                {% if cvfile %}<form action=/download_CV/{{person.initials}} method="get">
+                                <input type="submit" value="Download CV"> 
+                                </form> <br><br><br><br>{% endif %}
+		</ul>
+</div>
+</body>
+</html>

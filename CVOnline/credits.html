@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JaviFdezT - Django page</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<style>
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+	font-family: BEBAS;
+	src: url("http://webdesigncove.com/fonts/BEBAS___.ttf")
+}
+html, body, table{
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+} 
+object, iframe,blockquote,
+h1, h2, h3, h4, h5, h6, p, 
+dl, dt, dd, ol, ul, fieldset, 
+form, legend, table, caption, th, td {
+	margin: 0;
+	padding: 0;
+	border:none;
+}
+body {
+	background: #f5f5f5;
+	font-family: Helvetica, Arial, sans-serif;
+}
+#leftBar {
+	background-color: #C8F9F9;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	position: fixed;
+	width: 360px;
+	box-shadow: 6px 2px 8px rgba(0, 0, 0, 0.80);
+	-moz-box-shadow: 6px 2px 8px rgba(0, 0, 0, 0.80);
+	-webkit-box-shadow: 6px 2px 8px rgba(0, 0, 0, 0.80);
+	overflow:auto;/* must have scrollbar if content is outside viewport*/
+}
+#holder {
+	margin-left: 361px;
+        margin-right: 20px;
+	padding-left: 50px;
+	margin-top: 10px;
+	zoom:1.0;/* ie6 and 7*/
+}
+h1.logo {
+	font-size: 26px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	text-transform: uppercase;
+	line-height: 1.2em;
+	letter-spacing: -3px;
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+}
+h1.postTitle { font-family: BEBAS, Helvetica, Verdana, Sans-Serif; }
+p {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1.45em;
+        margin-left: 30px
+}
+#navigation {
+	text-align: center;
+ list-style-type: none;
+}
+#navigation a:link {
+	font-family: BEBAS, Helvetica, Verdana, Sans-Serif;
+	font-size: 20px;
+	color: #0E1074;
+}
+#navigation a:visited { color: #0E1074 }
+#navigation a:hover { color: #890A06; }
+</style>
+</head>
+
+<body>
+<div id="leftBar"> 
+		<br><br><br><br>		
+		<ul id="navigation">
+				<h1 class="postTitle">Javier Fernández Troncoso</h1><br><br><br><br>
+				<li>Email address: javierfdeztroncoso@gmail.com</li>
+				<li>{% if mylinkedin %}<a href='https://www.linkedin.com/in/javier-fern%C3%A1ndez-troncoso-7ba743112/'>LinKedin </a> {% endif %}{% if mygithub %}<a href='https://github.com/JaviFdezT/'>GitHub </a>{% endif %}</li><br><br>
+				<li>Brush Up! <a href=/BrushUp/home style="font-size:14px">(Docs)</a></li> 
+			        <li>CV Online - DjangoWeb</li> 
+		</ul>
+</div>
+
+<div id="holder">
+		<br>		
+		<ul id="navigation">
+				<h1 class="postTitle">CV Online - DjangoWeb</h1><br><br><br><br><br>
+				<li>Programming language: Django, html</li><li>Brush Up! <a href=/BrushUp/home style="font-size:14px">(Docs)</a></li> <br>
+			        <li>Date: March 2017</li> <br>
+			        <li>Contact: javierfdeztroncoso@gmail.com</li> <br><br><br><br>
+				<li><div align=left> <p style="font-weight:bold;font-size:22px;text-decoration:underline">Description</p></div></li> <br>
+                                <li><div align=left> <p style="font-size:17px">This website allows professionals to have an online CV. This app obtains the information from a database and 
+create the webpage by using this data in a way that the user only has to keep the ddbb updated. The users who want to use this application will have to contact 
+the administrator in order to get an account created. Then they will receive an email with their username, password and urls. Feel free to contact.</p></div></li> <br>
+		</ul>
+</div>
+</body>
+</html>
